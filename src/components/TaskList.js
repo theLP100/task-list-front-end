@@ -13,6 +13,7 @@ const TaskList = ({ tasks, updateComplete }) => {
           id={task.id}
           title={task.title}
           isComplete={task.isComplete}
+          description={task.description}
           updateComplete={updateComplete}
         />
       );
@@ -27,6 +28,7 @@ TaskList.propTypes = {
       id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
       isComplete: PropTypes.bool.isRequired,
+      description: PropTypes.string,
     })
   ).isRequired,
   updateComplete: PropTypes.func.isRequired,

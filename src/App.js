@@ -7,6 +7,7 @@ const TASKS = [
   {
     id: 1,
     title: 'Mow the lawn',
+
     isComplete: false,
   },
   {
@@ -21,8 +22,7 @@ const App = () => {
     return { ...task };
   });
   const [tasksList, setTasksList] = useState(initialCopy);
-  const updateComplete = (taskId, updatedComplete) => {
-    console.log('updateComplete is being run');
+  const updateComplete = (taskId, updateComplete) => {
     const newTasksList = [];
     for (const task of tasksList) {
       if (task.id !== taskId) {
@@ -30,12 +30,13 @@ const App = () => {
       } else {
         const newTask = {
           ...task,
-          isComplete: updatedComplete,
+          isComplete: updateComplete,
         };
         newTasksList.push(newTask);
       }
     }
     setTasksList(newTasksList);
+    //console.log(`task list is set ${newTasksList[0].isComplete}`);
   };
   return (
     <div className="App">
@@ -44,7 +45,7 @@ const App = () => {
       </header>
       <main>
         <div>
-          <TaskList tasks={TASKS} updateComplete={updateComplete} />
+          <TaskList tasks={tasksList} updateComplete={updateComplete} />
         </div>
       </main>
     </div>
