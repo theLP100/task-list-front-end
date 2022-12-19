@@ -1,8 +1,8 @@
 import React from 'react';
 import TaskList from './components/TaskList.js';
 import './App.css';
-import { useState } from 'react';
-
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 const TASKS = [
   {
     id: 1,
@@ -22,6 +22,26 @@ const App = () => {
     return { ...task };
   });
   const [tasksList, setTasksList] = useState(initialCopy);
+  const URL = 'https://task-list-api-c17.herokuapp.com/tasks';
+  useEffect(() => {
+    axios
+      .get(URL)
+      .then((res) => {
+        console.log(res);
+        const newTasks = res.data.map((task) => {
+          return {
+            id: task.id,
+            title: task.title,
+            description: task.description,
+            isComplete: task.isComplete,
+          };
+        });
+        setTasksList(newTasks);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   const updateComplete = (taskId, updateComplete) => {
     const newTasksList = [];
     for (const task of tasksList) {
