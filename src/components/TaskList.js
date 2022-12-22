@@ -1,10 +1,11 @@
+/* eslint-disable camelcase */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Task from './Task';
 import './TaskList.css';
 
-const TaskList = ({ tasks, updateComplete }) => {
-  console.log(tasks, updateComplete);
+const TaskList = ({ tasks, updateComplete, deleteTask }) => {
+  console.log(tasks, updateComplete, deleteTask);
   const getTaskListJSX = (tasks) => {
     return tasks.map((task) => {
       return (
@@ -15,6 +16,7 @@ const TaskList = ({ tasks, updateComplete }) => {
           is_complete={task.is_complete}
           description={task.description}
           updateComplete={updateComplete}
+          deleteTask={deleteTask}
         />
       );
     });
@@ -32,6 +34,7 @@ TaskList.propTypes = {
     })
   ).isRequired,
   updateComplete: PropTypes.func.isRequired,
+  deleteTask: PropTypes.func.isRequired,
 };
 
 export default TaskList;

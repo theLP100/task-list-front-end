@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React from 'react';
 import TaskList from './components/TaskList.js';
 import './App.css';
@@ -23,6 +24,7 @@ const App = () => {
   });
   const [tasksList, setTasksList] = useState(initialCopy);
   const URL = 'https://task-list-api-c17.herokuapp.com/tasks';
+  //below, should i name this function? instead of it being anonymous?
   useEffect(() => {
     axios
       .get(URL)
@@ -42,6 +44,20 @@ const App = () => {
         console.log(err);
       });
   }, []);
+
+  const deleteTask = (id) => {
+    console.log('deleteTask called');
+    axios.delete(`${URL}/${id}`).then(() => {
+      const newTasksList = [];
+      for (const task of tasksList) {
+        if (task.id !== id) {
+          newTasksList.push(task);
+        }
+      }
+      setTasksList(newTasksList);
+    });
+  };
+
   const updateComplete = (taskId, updateComplete) => {
     const newTasksList = [];
     for (const task of tasksList) {
@@ -65,7 +81,11 @@ const App = () => {
       </header>
       <main>
         <div>
-          <TaskList tasks={tasksList} updateComplete={updateComplete} />
+          <TaskList
+            tasks={tasksList}
+            updateComplete={updateComplete}
+            deleteTask={deleteTask}
+          />
         </div>
       </main>
     </div>
