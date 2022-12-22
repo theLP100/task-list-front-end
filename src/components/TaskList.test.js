@@ -7,12 +7,12 @@ describe('TaskList Renders', () => {
     {
       id: 1,
       title: 'task one',
-      isComplete: false,
+      is_complete: false,
     },
     {
       id: 42,
       title: 'task 2',
-      isComplete: true,
+      is_complete: true,
     },
   ];
 

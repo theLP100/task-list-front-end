@@ -8,12 +8,12 @@ const TASKS = [
     id: 1,
     title: 'Mow the lawn',
 
-    isComplete: false,
+    is_complete: false,
   },
   {
     id: 2,
     title: 'Cook Pasta',
-    isComplete: true,
+    is_complete: true,
   },
 ];
 
@@ -33,7 +33,7 @@ const App = () => {
             id: task.id,
             title: task.title,
             description: task.description,
-            isComplete: task.isComplete,
+            is_complete: task.is_complete,
           };
         });
         setTasksList(newTasks);
@@ -50,13 +50,13 @@ const App = () => {
       } else {
         const newTask = {
           ...task,
-          isComplete: updateComplete,
+          is_complete: updateComplete,
         };
         newTasksList.push(newTask);
       }
     }
     setTasksList(newTasksList);
-    //console.log(`task list is set ${newTasksList[0].isComplete}`);
+    //console.log(`task list is set ${newTasksList[0].is_complete}`);
   };
   return (
     <div className="App">

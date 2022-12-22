@@ -9,7 +9,7 @@ describe('Task', () => {
       <Task
         id={1}
         title={'Test Title'}
-        isComplete={true}
+        is_complete={true}
         onClickCallback={() => {}}
         onDeleteCallback={() => {}}
       />
@@ -29,7 +29,7 @@ describe('Task', () => {
       <Task
         id={42}
         title={'Test Title'}
-        isComplete={true}
+        is_complete={true}
         onClickCallback={clickCallback}
         onDeleteCallback={deleteCallback}
       />
@@ -52,7 +52,7 @@ describe('Task', () => {
       <Task
         id={1}
         title={'Test Title'}
-        isComplete={true}
+        is_complete={true}
         onClickCallback={() => {}}
         onDeleteCallback={() => {}}
       />
@@ -69,7 +69,7 @@ describe('Task', () => {
       <Task
         id={1}
         title={'Test Title'}
-        isComplete={false}
+        is_complete={false}
         onClickCallback={() => {}}
         onDeleteCallback={() => {}}
       />

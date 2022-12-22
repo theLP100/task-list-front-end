@@ -25,7 +25,7 @@ We will update and implement the following features:
 <details>
     <summary>Expand for hints on updating the toggle complete feature.</summary>
 
-1. Build a function to update an individual task (toggling its `isComplete` field) in <code>App</code>.  
+1. Build a function to update an individual task (toggling its `is_complete` field) in <code>App</code>.  
     - This function will need the <code>id</code> of the task to modify.
     - This function will need to update the task data stored in state.
 2. Pass this function as a callback through <code>TaskList</code> to <code>Task</code>
