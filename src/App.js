@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 import React from 'react';
 import TaskList from './components/TaskList.js';
+import NewTaskForm from './components/NewTaskForm.js';
 import './App.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -74,6 +75,25 @@ const App = () => {
     setTasksList(newTasksList);
     //console.log(`task list is set ${newTasksList[0].is_complete}`);
   };
+
+  const addTask = (newTaskInfo) => {
+    console.log('inside addTask: new task info is', newTaskInfo);
+    axios
+      .post(URL, newTaskInfo)
+      .then((response) => {
+        const newTasks = [...tasksList];
+        const newTaskJSON = {
+          ...newTaskInfo,
+          id: response.data.id,
+        };
+        newTasks.push(newTaskJSON);
+        setTasksList(newTasks);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -86,6 +106,7 @@ const App = () => {
             updateComplete={updateComplete}
             deleteTask={deleteTask}
           />
+          <NewTaskForm addTaskCallbackFunc={addTask} />
         </div>
       </main>
     </div>
